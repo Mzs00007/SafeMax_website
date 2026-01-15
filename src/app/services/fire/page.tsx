@@ -10,6 +10,7 @@ import MobileServiceNav from '@/components/layout/MobileServiceNav';
 import PageHero from '@/components/layout/PageHero';
 import FireHero3D from '@/components/ui/ThreeHero/FireHero3D';
 import FAQSection from '@/components/ui/FAQSection';
+import ServiceSidebarForm from '@/components/services/ServiceSidebarForm';
 import { FileText, Wrench, HardHat, Settings, Shield, CheckCircle } from 'lucide-react';
 
 // --- HIVE DATA FOR FIRE ENGINEERING ---
@@ -307,14 +308,7 @@ function FireEngineeringContent() {
                         </div>
 
                         {/* Help Box */}
-                        <div className="mt-8 p-6 bg-gray-900 rounded-2xl text-white relative overflow-hidden">
-                            <div className="absolute inset-0 bg-[url('/assets/images/service-bg-1.jpg')] opacity-20 bg-cover bg-center"></div>
-                            <div className="relative z-10">
-                                <h4 className="font-bold text-lg mb-2">Need an Expert?</h4>
-                                <p className="text-gray-300 text-sm mb-4">Our engineers are ready to assist with your DCD approvals.</p>
-                                <a href="/contact" className="block w-full py-2 bg-safemax-orange text-center rounded-lg font-bold hover:bg-red-700 transition-colors cursor-pointer">Contact Us</a>
-                            </div>
-                        </div>
+                        <ServiceSidebarForm type="fire" />
                     </div>
 
                     {/* CONTENT AREA */}
@@ -368,7 +362,7 @@ function FireEngineeringContent() {
             />
 
             {/* Safe Area Spacer for Mobile Nav */}
-            <div className="h-24 md:hidden"></div>
+            <div className="h-24 lg:hidden"></div>
         </div>
 
     );

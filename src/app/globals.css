@@ -4,6 +4,7 @@
   --color-safemax-orange: #FF5722;
   --color-safemax-dark: #1A1A1A;
   --color-safemax-gray: #F5F5F5;
+  --color-safemax-red: #DC2626;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -140,4 +141,71 @@ body {
 
 .animate-shine-sweep {
   animation: shine-sweep 4s infinite ease-in-out;
+}
+
+/* --- Custom Scrollbar --- */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* --- Moving Shine Border Effect --- */
+@keyframes shine-border {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.shine-border-container {
+  position: relative;
+  border-radius: 4px;
+  /* match rounded-sm */
+  /* Remove overflow-hidden here to see border, but card usually clips */
+  z-index: 0;
+}
+
+.shine-border-container::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  /* The thickness of the border */
+  z-index: -1;
+  background: linear-gradient(60deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 87, 34, 0.5),
+      /* Safemax Orange hint */
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.1));
+  background-size: 300% 300%;
+  border-radius: inherit;
+  animation: shine-border 4s ease infinite;
+  opacity: 0.6;
+}
+
+/* Enhance Featured Project Glow */
+.featured-glow {
+  box-shadow: 0 0 40px -10px rgba(255, 87, 34, 0.3);
 }

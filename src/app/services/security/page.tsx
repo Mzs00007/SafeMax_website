@@ -6,10 +6,11 @@ import FadeInUp from '@/components/animations/FadeInUp';
 import HexagonHive from '@/components/ui/HexagonHive';
 import SuppliersCarousel from '@/components/ui/SuppliersCarousel';
 import MobileServiceNav from '@/components/layout/MobileServiceNav';
-import PageHero from '@/components/layout/PageHero';
-import FAQSection from '@/components/ui/FAQSection';
+import SecurityHero from '@/components/ui/ThreeHero/SecurityHero';
+import ServiceSidebarForm from '@/components/services/ServiceSidebarForm';
+import { CheckCircle, Eye, Lock, Package, Server, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Shield, Lock, Eye, CheckCircle, Server, CreditCard, Package } from 'lucide-react';
+import FAQSection from '@/components/ui/FAQSection';
 
 // --- HIVE DATA FOR SECURITY ---
 const CCTV_HIVE = [
@@ -23,7 +24,7 @@ const CCTV_HIVE = [
         image: 'https://images.unsplash.com/photo-1584744982491-665216d95f8b',
         title: 'Thermal Screening',
         subtitle: 'Fever Detection',
-        description: 'Thermal Screening Cameras generally detect a high body temperature and fever when used appropriately. There is no contact, and data can be viewed at a distance.' // COVID 19
+        description: 'Thermal Screening Cameras generally detect a high body temperature and fever when used appropriately. There is no contact, and data can be viewed at a distance.'
     },
     {
         image: 'https://images.unsplash.com/photo-1496368077930-c1e31b4e5b44',
@@ -131,6 +132,8 @@ const TRADING_HIVE = [
         description: 'Industry standard for large-scale fire alarm networks, known for their TrueAlert notification appliances and high-capacity panels.'
     },
 ];
+
+// ... (Hive Data Constants remain same, skipping to Component)
 
 function SecurityServicesContent() {
     const searchParams = useSearchParams();
@@ -252,15 +255,7 @@ function SecurityServicesContent() {
 
     return (
         <div className="bg-white min-h-screen pb-16">
-            <PageHero
-                title="Security & ELV Systems"
-                breadcrumbs={[
-                    { label: 'Services', href: '/services' },
-                    { label: 'Security & ELV', href: '/services/security' }
-                ]}
-                backgroundImage="https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=2070&auto=format&fit=crop"
-                description="Advanced Surveillance, Access Control & Building Intelligence."
-            />
+            <SecurityHero />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
 
@@ -289,14 +284,7 @@ function SecurityServicesContent() {
                         </div>
 
                         {/* Help Box */}
-                        <div className="mt-8 p-6 bg-gray-900 rounded-2xl text-white relative overflow-hidden">
-                            <div className="absolute inset-0 bg-[url('/assets/images/project-placeholder.png')] opacity-20 bg-cover bg-center"></div>
-                            <div className="relative z-10">
-                                <h4 className="font-bold text-lg mb-2">Security Audit?</h4>
-                                <p className="text-gray-300 text-sm mb-4">Get a free SIRA compliance risk assessment today.</p>
-                                <a href="/contact" className="block w-full py-2 bg-indigo-600 text-center rounded-lg font-bold hover:bg-indigo-700 transition-colors cursor-pointer">Book Audit</a>
-                            </div>
-                        </div>
+                        <ServiceSidebarForm type="security" />
                     </div>
 
                     {/* CONTENT AREA */}

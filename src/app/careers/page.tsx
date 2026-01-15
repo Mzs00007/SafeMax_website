@@ -4,6 +4,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import FadeInUp from '@/components/animations/FadeInUp';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import CareerForm from '@/components/careers/CareerForm';
 
 export default function Careers() {
     return (
@@ -234,14 +235,10 @@ export default function Careers() {
                         ))}
                     </div>
 
-                    {/* Footer Contact Instruction */}
+                    {/* 4. APPLICATION FORM */}
                     <FadeInUp delay={0.6}>
-                        <div className="mt-16 bg-gray-50 rounded-3xl p-8 border border-gray-100 text-center relative overflow-hidden">
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-safemax-orange via-red-600 to-safemax-orange"></div>
-                            <h4 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">How to Apply</h4>
-                            <p className="text-gray-600 text-lg">
-                                Interested Candidates Send CV to <a href="mailto:career@safemax.org" className="font-bold text-safemax-orange hover:underline">career@safemax.org</a> with subject as <span className="font-bold text-gray-900">position name</span>.
-                            </p>
+                        <div className="mt-16">
+                            <CareerForm />
                         </div>
                     </FadeInUp>
                 </div>

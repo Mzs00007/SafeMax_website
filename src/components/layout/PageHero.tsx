@@ -78,8 +78,8 @@ export default function PageHero({ title, breadcrumbs, backgroundImage, descript
                             <Link
                                 href={crumb.href}
                                 className={`text-xs md:text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${index === breadcrumbs.length - 1
-                                        ? 'text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)] pointer-events-none'
-                                        : 'text-gray-400 hover:text-white'
+                                    ? 'text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)] pointer-events-none'
+                                    : 'text-gray-400 hover:text-white'
                                     }`}
                             >
                                 {crumb.label}

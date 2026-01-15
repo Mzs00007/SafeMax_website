@@ -180,23 +180,33 @@ function VideoCard({ video, index, onPlay }: { video: Video, index: number, onPl
 }
 
 // --- Video Modal Component ---
+// --- Video Modal Component ---
+import { createPortal } from 'react-dom';
+
 function VideoModal({ video, onClose }: { video: Video, onClose: () => void }) {
+    const [mounted, setMounted] = useState(false);
+
     useEffect(() => {
+        setMounted(true);
         // Prevent scrolling on mount
         document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
 
         return () => {
             // Re-enable scrolling on unmount
             document.body.style.overflow = 'unset';
+            document.documentElement.style.overflow = 'unset';
         };
     }, []);
 
-    return (
+    if (!mounted) return null;
+
+    return createPortal(
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[99999] bg-black flex flex-col items-center justify-center p-4"
+            className="fixed inset-0 z-[2147483647] bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-4"
             onClick={onClose}
         >
             <motion.div
@@ -231,6 +241,7 @@ function VideoModal({ video, onClose }: { video: Video, onClose: () => void }) {
                 </div>
                 <span className="font-bold text-sm uppercase tracking-wider">Close Player</span>
             </motion.button>
-        </motion.div>
+        </motion.div>,
+        document.body
     );
 }

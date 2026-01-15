@@ -47,7 +47,7 @@ export default function BackToTop() {
                             animate={{ y: 0, scale: 1, opacity: 1 }}
                             exit={{ y: -window.innerHeight, scale: 1.5, opacity: 0 }}
                             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                            className="flex items-center justify-center filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+                            className="relative flex items-center justify-center filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
                         >
                             <svg width="200" height="200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible">
                                 <path
@@ -65,6 +65,14 @@ export default function BackToTop() {
                                     fill="none"
                                 />
                             </svg>
+                            {/* Logo inside Arrow */}
+                            <div className="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12">
+                                <img
+                                    src="/assets/images/logo-white.png"
+                                    alt="Logo"
+                                    className="w-full h-full object-contain opacity-90"
+                                />
+                            </div>
                         </motion.div>
                     </motion.div>
                 )}
@@ -78,10 +86,13 @@ export default function BackToTop() {
                         exit={{ opacity: 0, scale: 0.5, y: 20 }}
                         onClick={scrollToTop}
                         onMouseEnter={playHover}
-                        // Moved to LEFT side as requested
-                        className="hidden md:flex fixed bottom-8 left-8 z-40 items-center justify-center w-12 h-12 bg-black text-white border border-[#DC2626] rounded animate-pulse-slow shadow-[0_0_15px_rgba(220,38,38,0.3)] hover:bg-[#111] hover:scale-110 transition-all duration-300 group"
+                        // Expanded button with text
+                        className="hidden md:flex fixed bottom-8 left-8 z-40 items-center justify-center px-5 py-3 w-auto gap-3 bg-black text-white border border-[#DC2626] rounded animate-pulse-slow shadow-[0_0_15px_rgba(220,38,38,0.3)] hover:bg-[#111] hover:scale-105 transition-all duration-300 group"
                     >
-                        <ArrowUp size={20} className="text-[#DC2626] group-hover:-translate-y-1 transition-transform duration-300" />
+                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-200 group-hover:text-white transition-colors">
+                            Back To Top
+                        </span>
+                        <ArrowUp size={18} className="text-[#DC2626] group-hover:-translate-y-1 transition-transform duration-300" />
                     </motion.button>
                 )}
             </AnimatePresence>

@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Preloader from "@/components/layout/Preloader";
 import BackToTop from '@/components/ui/BackToTop';
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
+import GlowingLinesBackground from "@/components/layout/GlowingLinesBackground";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
   title: "SafeMax Fire & Safety | SIRA & DCD Approved Integrator",
@@ -22,8 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${outfit.variable}`}>
         <ScrollToTop />
+        <GlowingLinesBackground />
         <Preloader />
         <div className="flex flex-col min-h-screen">
           <Navbar />

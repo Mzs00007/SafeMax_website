@@ -101,16 +101,85 @@ export default function MobileBottomNav({ onMenuClick, isMenuOpen, onLogoClick }
                 )}
             </AnimatePresence>
 
-            <div className="fixed bottom-0 left-0 right-0 z-[100] md:hidden">
+            {/* NEW CONTACT MODAL OVERLAY */}
+            <AnimatePresence>
+                {isContactOpen && (
+                    <>
+                        {/* Backdrop - Click to Close */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200] md:hidden"
+                            onClick={() => setIsContactOpen(false)}
+                        />
+
+                        {/* Centered Content */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 50, scale: 0.9 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                            className="fixed inset-0 z-[201] flex flex-col items-center justify-center gap-6 pointer-events-none md:hidden"
+                        >
+                            <div className="flex flex-col gap-4 pointer-events-auto">
+                                {/* WhatsApp */}
+                                <motion.a
+                                    href="https://wa.me/971509273927?text=Hello%20I%20have%20a%20question"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={playClick}
+                                    className="flex items-center gap-4 bg-[#25D366] pl-3 pr-8 py-3 rounded-sm shadow-[0_10px_20px_rgba(37,211,102,0.3)] border-b-4 border-[#128C7E] active:border-b-0 active:translate-y-[4px] transition-all w-[240px]"
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                >
+                                    <div className="bg-white p-2 rounded-sm flex items-center justify-center w-10 h-10 shadow-sm">
+                                        <svg viewBox="0 0 24 24" fill="#25D366" className="w-full h-full">
+                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118 1.428-.214 1.763-1.082 1.957-1.895.099-.413.099-1.652.099-1.652.298-.149.447-.298s-.103-.497-.301-.645zM12 20.916c-1.928 0-3.83-.5-5.59-1.545l-4.17 1.024 1.112-4.062a9.155 9.155 0 01-1.458-5.32c0-5.013 4.07-9.082 9.106-9.082 2.43 0 4.71 1.053 6.305 2.753a8.913 8.913 0 012.632 6.305c0 5.034-3.957 9.082-9.037 9.082V20.916z" />
+                                        </svg>
+                                    </div>
+                                    <span className="text-white text-lg font-black tracking-widest uppercase">WhatsApp</span>
+                                </motion.a>
+
+                                {/* Call */}
+                                <motion.a
+                                    href="tel:+971509273927"
+                                    onClick={playClick}
+                                    className="flex items-center gap-4 bg-[#DC2626] pl-3 pr-8 py-3 rounded-sm shadow-[0_10px_20px_rgba(220,38,38,0.3)] border-b-4 border-[#991b1b] active:border-b-0 active:translate-y-[4px] transition-all w-[240px]"
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                >
+                                    <div className="relative w-10 h-10 rounded-sm overflow-hidden border-2 border-white/20 shadow-sm">
+                                        <Image
+                                            src="https://i.pinimg.com/736x/39/fe/ef/39feefdce5c11eae5f022066426d384b.jpg"
+                                            alt="Call"
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </div>
+                                    <span className="text-white text-lg font-black tracking-widest uppercase">Call Now</span>
+                                </motion.a>
+                            </div>
+
+                            {/* Close Text Hint */}
+                            <span className="text-white/50 text-xs font-medium uppercase tracking-[0.2em] mt-8 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
+                                Tap anywhere to close
+                            </span>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
+
+            <div className={`fixed bottom-0 left-0 right-0 md:hidden ${isMenuOpen ? 'z-[50] pointer-events-none' : 'z-[100]'}`}>
 
                 {/* 1. ANIMATING NAVBAR (Slides Down) */}
                 <motion.div
                     className="relative w-full h-[90px] filter drop-shadow-[0_-5px_10px_rgba(0,0,0,0.3)]"
-                    animate={{ y: isAtBottom ? "60%" : "0%" }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    animate={{ y: isMenuOpen ? "105%" : (isAtBottom ? "60%" : "0%") }}
+                    transition={{ duration: 0.7, ease: "easeInOut" }}
                 >
                     {/* SVG Background Shape */}
-                    <div className="absolute inset-0 w-full h-full text-black">
+                    <div className="absolute inset-0 w-full h-full text-black pointer-events-none">
                         <svg className="w-full h-full" viewBox="0 0 375 90" preserveAspectRatio="none">
                             <path
                                 d="M0,0 L130,0 C150,0 150,45 187.5,45 C225,45 225,0 245,0 L375,0 L375,90 L0,90 Z"
@@ -118,7 +187,7 @@ export default function MobileBottomNav({ onMenuClick, isMenuOpen, onLogoClick }
                             />
                         </svg>
                         {/* Border Line */}
-                        <svg className="absolute top-0 left-0 w-full h-full pointer-events-none" viewBox="0 0 375 90" preserveAspectRatio="none">
+                        <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 375 90" preserveAspectRatio="none">
                             <path
                                 d="M0,1 L130,1 C150,1 150,46 187.5,46 C225,46 225,1 245,1 L375,1"
                                 fill="none"
@@ -134,56 +203,6 @@ export default function MobileBottomNav({ onMenuClick, isMenuOpen, onLogoClick }
 
                         {/* LEFT: CONTACT MENU (Pop-up) */}
                         <div className="relative flex flex-col items-start justify-end mb-1">
-                            {/* Pop-up Menu (Animate Presence) */}
-                            <AnimatePresence>
-                                {isContactOpen && (
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 10, scale: 0.9, x: -10 }}
-                                        animate={{ opacity: 1, y: -65, scale: 1, x: 0 }}
-                                        exit={{ opacity: 0, y: 10, scale: 0.9, x: -10 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                                        className="absolute bottom-0 left-0 flex flex-col gap-3 items-start pointer-events-auto"
-                                    >
-                                        {/* WhatsApp */}
-                                        <motion.a
-                                            href="https://wa.me/971509273927?text=Hello%20I%20have%20a%20question"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            onClick={playClick}
-                                            className="flex items-center gap-3 bg-[#25D366] pl-3 pr-5 py-2.5 rounded-full shadow-xl border border-green-400 whitespace-nowrap backdrop-blur-sm"
-                                            initial={{ x: -20, opacity: 0 }}
-                                            animate={{ x: 0, opacity: 1 }}
-                                            transition={{ delay: 0.05 }}
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                        >
-                                            <div className="bg-white/20 p-1.5 rounded-full">
-                                                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
-                                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118 1.428-.214 1.763-1.082 1.957-1.895.099-.413.099-1.652.099-1.652.298-.149.447-.298s-.103-.497-.301-.645zM12 20.916c-1.928 0-3.83-.5-5.59-1.545l-4.17 1.024 1.112-4.062a9.155 9.155 0 01-1.458-5.32c0-5.013 4.07-9.082 9.106-9.082 2.43 0 4.71 1.053 6.305 2.753a8.913 8.913 0 012.632 6.305c0 5.034-3.957 9.082-9.037 9.082V20.916z" />
-                                                </svg>
-                                            </div>
-                                            <span className="text-white text-sm font-bold tracking-wide">WhatsApp</span>
-                                        </motion.a>
-
-                                        {/* Call */}
-                                        <motion.a
-                                            href="tel:+971509273927"
-                                            onClick={playClick}
-                                            className="flex items-center gap-3 bg-[#DC2626] pl-3 pr-5 py-2.5 rounded-full shadow-xl border border-red-400 whitespace-nowrap backdrop-blur-sm"
-                                            initial={{ x: -25, opacity: 0 }}
-                                            animate={{ x: 0, opacity: 1 }}
-                                            transition={{ delay: 0.1 }}
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                        >
-                                            <div className="bg-white/20 p-1.5 rounded-full">
-                                                <Phone size={20} className="text-white" />
-                                            </div>
-                                            <span className="text-white text-sm font-bold tracking-wide">Call Now</span>
-                                        </motion.a>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
 
                             {/* Main CONTACT Trigger Button */}
                             <motion.button
@@ -197,16 +216,16 @@ export default function MobileBottomNav({ onMenuClick, isMenuOpen, onLogoClick }
                                 whileTap={{ scale: 0.9, y: 0 }}
                                 initial="idle"
                             >
-                                <div className={`w-14 h-14 bg-white rounded-full flex flex-col items-center justify-center gap-[3px] border border-[#DC2626] shadow-[0_4px_0_rgba(220,38,38,0.3)] relative transition-all duration-300 ${isContactOpen ? 'bg-red-50 border-red-500 shadow-none translate-y-[4px]' : ''}`}>
+                                <div className={`w-14 h-14 bg-white rounded-sm flex flex-col items-center justify-center gap-[3px] border border-[#DC2626] border-b-4 border-b-red-700 shadow-[0_4px_10px_rgba(220,38,38,0.2)] relative transition-all duration-100 ${isContactOpen ? 'bg-red-50 border-red-500 border-b-0 translate-y-[4px] shadow-none' : ''}`}>
                                     {isContactOpen ? (
                                         <X size={28} className="text-[#DC2626]" />
                                     ) : (
                                         <>
-                                            <motion.span className="block w-7 h-1 bg-[#111] rounded-full border border-gray-700" />
-                                            <motion.span className="h-3.5 bg-white rounded-full flex items-center justify-center overflow-hidden border border-gray-300 w-[40px]">
+                                            <motion.span className="block w-7 h-1 bg-[#111] rounded-sm" />
+                                            <motion.span className="h-3.5 bg-white rounded-sm flex items-center justify-center overflow-hidden border border-gray-300 w-[40px]">
                                                 <span className="text-[6px] font-black text-black tracking-widest pt-[1px] px-1 uppercase">Chat</span>
                                             </motion.span>
-                                            <motion.span className="block w-7 h-1 bg-[#DC2626] rounded-full" />
+                                            <motion.span className="block w-7 h-1 bg-[#DC2626] rounded-sm" />
                                         </>
                                     )}
                                 </div>
@@ -267,15 +286,15 @@ export default function MobileBottomNav({ onMenuClick, isMenuOpen, onLogoClick }
                             initial="idle"
                         >
                             {isMenuOpen ? (
-                                <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-black border border-[#DC2626] shadow-none translate-y-[4px] transition-transform">
+                                <div className="w-14 h-14 bg-white rounded-sm flex items-center justify-center text-black border border-[#DC2626] shadow-none translate-y-[4px] transition-transform">
                                     <X size={28} />
                                 </div>
                             ) : (
-                                // 3-Color Hamburger State (Now in Circle)
-                                <div className="w-14 h-14 bg-white rounded-full flex flex-col items-center justify-center gap-[3px] border border-[#DC2626] shadow-[0_4px_0_rgba(220,38,38,0.3)] relative z-10 transition-colors active:shadow-none active:translate-y-[4px]">
+                                // 3-Color Hamburger State (Now in Sharp Square)
+                                <div className="w-14 h-14 bg-white rounded-sm flex flex-col items-center justify-center gap-[3px] border border-[#DC2626] border-b-4 border-b-red-700 shadow-[0_4px_10px_rgba(220,38,38,0.2)] relative z-10 transition-all duration-100 active:shadow-none active:border-b-0 active:translate-y-[4px]">
                                     {/* Line 1: Black - Slides Left */}
                                     <motion.span
-                                        className="block w-7 h-1 bg-[#111] rounded-full border border-gray-700"
+                                        className="block w-7 h-1 bg-[#111] rounded-sm"
                                         variants={{
                                             idle: { x: 0 },
                                             hover: { x: -2 },
@@ -285,7 +304,7 @@ export default function MobileBottomNav({ onMenuClick, isMenuOpen, onLogoClick }
 
                                     {/* Line 2: White Pill with MENU text */}
                                     <motion.span
-                                        className="h-3.5 bg-white rounded-full flex items-center justify-center overflow-hidden border border-gray-300"
+                                        className="h-3.5 bg-white rounded-sm flex items-center justify-center overflow-hidden border border-gray-300"
                                         variants={{
                                             idle: { width: 34 },
                                             hover: { width: 40 },
@@ -297,7 +316,7 @@ export default function MobileBottomNav({ onMenuClick, isMenuOpen, onLogoClick }
 
                                     {/* Line 3: Red - Slides Right */}
                                     <motion.span
-                                        className="block w-7 h-1 bg-[#DC2626] rounded-full"
+                                        className="block w-7 h-1 bg-[#DC2626] rounded-sm"
                                         variants={{
                                             idle: { x: 0 },
                                             hover: { x: 2 },

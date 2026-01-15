@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import FadeInUp from '@/components/animations/FadeInUp';
 import GravityTitans from '@/components/ui/GravityTitans';
+import RapidResponseForm from '@/components/home/RapidResponseForm';
 
 export default function Home() {
   return (
@@ -189,20 +190,57 @@ export default function Home() {
       </section>
 
       {/* CALL TO ACTION STRIP - Glassmorphic Dark */}
-      <section className="py-20 relative z-10 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="bg-black/60 backdrop-blur-xl rounded-3xl p-10 border border-white/10 shadow-2xl">
-            <FadeInUp>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to upgrade your Life Safety Standards?</h2>
-              <p className="text-gray-300 mb-10 text-lg">Join the ranks of Emaar, RTA, and Dubai Police who trust SafeMax.</p>
-              <div className="flex justify-center gap-4">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link href="/contact" className="px-10 py-4 bg-safemax-orange text-white rounded-lg font-bold text-lg hover:bg-orange-600 transition shadow-lg box-shadow-glow">
-                    Get a Quote
-                  </Link>
-                </motion.div>
-              </div>
-            </FadeInUp>
+      <section className="py-20 relative z-10 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-black/60 backdrop-blur-xl rounded-[3rem] p-8 md:p-12 border border-white/10 shadow-2xl overflow-hidden relative">
+
+            {/* Background Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-safemax-orange/20 blur-[120px] rounded-full pointer-events-none" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+              {/* Left Column: Text */}
+              <FadeInUp>
+                <div className="text-center lg:text-left">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold uppercase tracking-widest mb-6">
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    Priority Dispatch
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+                    Critical System Failure? <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">We Respond in 4 Hours.</span>
+                  </h2>
+                  <p className="text-gray-300 mb-8 text-lg max-w-xl mx-auto lg:mx-0">
+                    Don't risk downtime or fines. Join Emaar, RTA, and Dubai Police who trust SafeMax for immediate rapid response and rectification.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <div className="flex items-center gap-3 text-gray-400 text-sm">
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                        <span className="text-xl">🛡️</span>
+                      </div>
+                      <div className="text-left">
+                        <p className="text-white font-bold">DCD Approved</p>
+                        <p>Certified Integrator</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 text-gray-400 text-sm">
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                        <span className="text-xl">⚡</span>
+                      </div>
+                      <div className="text-left">
+                        <p className="text-white font-bold">24/7 Hotline</p>
+                        <p>Always Active</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </FadeInUp>
+
+              {/* Right Column: Form */}
+              <FadeInUp delay={0.2}>
+                <RapidResponseForm />
+              </FadeInUp>
+            </div>
           </div>
         </div>
       </section>

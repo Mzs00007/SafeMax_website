@@ -85,6 +85,8 @@ export default function About() {
                     </div>
                 </FadeInUp>
 
+
+
                 {/* Leadership */}
                 <div>
                     <FadeInUp>

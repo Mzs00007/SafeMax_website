@@ -21,6 +21,7 @@ const CLIENTS = [
 export default function GravityTitans() {
     const sceneRef = useRef<HTMLDivElement>(null);
     const engineRef = useRef<Matter.Engine | null>(null);
+    console.log("Gravity Titans Loaded - vFix"); // FORCE UPDATE
     const renderRef = useRef<Matter.Render | null>(null);
     const runnerRef = useRef<Matter.Runner | null>(null);
 
@@ -38,7 +39,7 @@ export default function GravityTitans() {
     // Smart Sizing Algorithm (Keep as is)
     const calculateSmartRadius = (width: number, height: number, count: number) => {
         if (!width || !height || width < 100 || height < 200) return 30;
-        const densityFactor = 0.35;
+        const densityFactor = 0.20;
         const totalArea = width * height;
         const targetAreaPerCircle = (totalArea * densityFactor) / count;
         if (targetAreaPerCircle <= 0 || isNaN(targetAreaPerCircle)) return 30;
@@ -127,28 +128,35 @@ export default function GravityTitans() {
 
         // Core Update Loop
         Events.on(engine, 'beforeUpdate', () => {
-            // SNAKE MODE ANIMATION
+            // SNAKE MODE ANIMATION (Linear Marquee)
             if (isSnakeModeRef.current) {
-                timeRef.current += 0.015; // Consistent Speed
+                // Move by pixels/frame
+                timeRef.current += 1.5;
                 const t = timeRef.current;
 
-                const centerX = render.options.width! / 2;
+                const width = render.options.width!; // Safe assertion as resized
                 const centerY = render.options.height! / 2;
 
-                // Circular Orbit Radius (Standardized)
-                // "Linear circular clockwise" - Push to edges
-                const orbitRadius = Math.min(render.options.width!, render.options.height!) * 0.45;
+                const gap = 180; // Distance between logos
+                const totalLength = CLIENTS.length * gap;
+
+                // We want the train to cover the screen. 
+                // 12 * 180 = 2160px. Sufficient for most screens.
 
                 titans.forEach((body, i) => {
-                    // Train Pattern: Follow each other
-                    const spacing = 0.5; // Distance between cars
-                    const angle = t - (i * spacing);
+                    // Linear Left -> Right
+                    // Calculate position in the loop
+                    let x = ((i * gap) + t) % totalLength;
 
-                    // Clockwise: cos(angle), sin(angle)
-                    const x = centerX + Math.cos(angle) * orbitRadius;
-                    const y = centerY + Math.sin(angle) * orbitRadius;
+                    // Shift left so index 0 starts entering or visible
+                    // And allow wrapping seamlessly.
+                    // If x goes > width, it eventually wraps to 0 (Left).
+                    // Since totalLength > width (usually), the wrap happens off-screen right.
+                    // We stick to the "conveyor belt" metaphor.
 
-                    Body.setPosition(body, { x, y });
+                    x -= gap; // Buffer to start slightly off-screen left if needed
+
+                    Body.setPosition(body, { x: x, y: centerY });
                     Body.setVelocity(body, { x: 0, y: 0 });
                     Body.setAngularVelocity(body, 0);
                 });
@@ -188,7 +196,13 @@ export default function GravityTitans() {
             const rect = render.canvas.getBoundingClientRect();
             const x = clientX - rect.left;
             const y = clientY - rect.top;
-            (Matter.Mouse as any).setPosition(mouse, { x, y });
+            // Manual update to avoid "setPosition is not a function" error
+            if (mouse) {
+                mouse.position.x = x;
+                mouse.position.y = y;
+                mouse.absolute.x = x;
+                mouse.absolute.y = y;
+            }
         };
 
         const handlePointerDown = (e: any) => {

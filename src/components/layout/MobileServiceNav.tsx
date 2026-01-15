@@ -40,7 +40,7 @@ export default function MobileServiceNav({ tabs, activeTab, onTabChange }: Mobil
 
     return (
         <motion.div
-            className="fixed right-0 top-1/2 -translate-y-1/2 z-[999] md:hidden flex items-center shadow-[0_5px_20px_rgba(0,0,0,0.5)] rounded-l-xl overflow-hidden"
+            className="fixed right-0 top-1/2 -translate-y-1/2 z-[999] lg:hidden flex items-center shadow-[0_5px_20px_rgba(0,0,0,0.5)] rounded-l-xl overflow-hidden"
             initial={{ x: 0 }}
             animate={{ x: isPeek ? "calc(100% - 1.5rem)" : "0%" }} // Slimmer handle exposure (1.5rem / 24px)
             transition={{ type: "spring", stiffness: 220, damping: 25 }}
