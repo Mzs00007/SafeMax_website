@@ -59,7 +59,7 @@ export default function FireHero3D() {
                 style={{ x: bgX, y: bgY, scale: 1.1 }}
                 className="absolute inset-0 z-0"
             >
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center opacity-50 blur-[2px]" />
+                <div className="absolute inset-0 bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnOPjf8kaEXQ8hPtRE67k4aMXbOqp-IQxU9Q&s')] bg-cover bg-center opacity-50 blur-[2px]" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
             </motion.div>
 

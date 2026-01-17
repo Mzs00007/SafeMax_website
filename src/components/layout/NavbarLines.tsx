@@ -22,9 +22,9 @@ export default function NavbarLines() {
         const linesConfig = {
             yBase: [30, 45, 60], // Top to Bottom
             colors: [
-                'rgba(80, 80, 80, 0.6)',   // Black/Dark Grey (Top)
-                'rgba(255, 255, 255, 0.5)', // White (Middle)
-                'rgba(220, 38, 38, 0.5)'    // Red (Bottom)
+                'rgba(0, 0, 0, 0.6)',   // Black/Dark Grey (Top)
+                'rgba(255, 255, 255, 1)', // White (Middle)
+                'rgba(255, 0, 0, 0.78)'    // Red (Bottom)
             ],
             speed: 0.008,
             amplitude: 3, // Reduced amplitude for straighter look

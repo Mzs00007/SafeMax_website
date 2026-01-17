@@ -15,7 +15,7 @@ const SERVICES = [
         link: '/services/fire?tab=amc',
         color: 'bg-blue-600',
         colSpan: 'md:col-span-2',
-        image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2070&auto=format&fit=crop' // Industrial Maintenance
+        image: 'https://static.vecteezy.com/system/resources/thumbnails/074/236/908/small_2x/skilled-technician-in-safety-gear-performs-maintenance-on-industrial-plumbing-system-with-wrench-photo.jpg' // Industrial Maintenance
     },
     {
         id: 'rect',
@@ -25,7 +25,7 @@ const SERVICES = [
         link: '/services/fire?tab=rectification',
         color: 'bg-safemax-orange',
         colSpan: 'md:col-span-1',
-        image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop' // Technician Repairing
+        image: 'https://static.vecteezy.com/system/resources/thumbnails/055/122/851/small_2x/industrial-control-room-with-piping-and-equipment-for-managing-fluid-systems-in-a-commercial-facility-photo.jpg' // Technician Repairing
     },
     {
         id: 'fitout',
@@ -35,7 +35,7 @@ const SERVICES = [
         link: '/services/fire?tab=fitout',
         color: 'bg-emerald-600',
         colSpan: 'md:col-span-1',
-        image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2031&auto=format&fit=crop' // Construction/Interior
+        image: 'https://static.vecteezy.com/system/resources/thumbnails/011/808/128/small_2x/fire-extinguisher-system-on-the-wall-with-fire-exit-door-sign-for-emergency-stairwell-fire-for-escape-in-building-or-apartment-photo.jpg' // Construction/Interior
     },
     {
         id: 'projects',
@@ -45,7 +45,7 @@ const SERVICES = [
         link: '/projects',
         color: 'bg-safemax-dark',
         colSpan: 'md:col-span-2',
-        image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop' // Construction Site
+        image: 'https://static.vecteezy.com/system/resources/thumbnails/074/047/118/small_2x/a-woman-in-an-orange-vest-and-safety-vest-is-standing-in-front-of-pipes-photo.jpg' // Construction Site
     },
     {
         id: 'trading',
@@ -55,7 +55,7 @@ const SERVICES = [
         link: '/services/trading',
         color: 'bg-amber-600',
         colSpan: 'md:col-span-1',
-        image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop' // Warehouse
+        image: 'https://www.variex.in/fire-fighting-equipment-banner-2/' // Warehouse
     },
     {
         id: 'security',
@@ -65,7 +65,7 @@ const SERVICES = [
         link: '/services/security',
         color: 'bg-indigo-600',
         colSpan: 'md:col-span-2',
-        image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=2070&auto=format&fit=crop' // CCTV
+        image: 'https://pbs.twimg.com/media/Ed7UeT8XkAUYg3C.jpg:large' // CCTV
     }
 ];
 

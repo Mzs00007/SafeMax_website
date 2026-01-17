@@ -3,21 +3,21 @@ import { motion } from 'framer-motion';
 
 // 1. MAINTENANCE GIANTS (The "Always On" Contracts)
 const CLIENTS_ROW_1 = [
-    { name: 'EMAAR', sector: 'Real Estate', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Burj.jpg/964px-Burj.jpg', color: 'bg-blue-600', width: 'w-[280px]' },
-    { name: 'RTA DUBAI', sector: 'Transport', image: 'https://upload.wikimedia.org/wikipedia/commons/c/c2/Dubai_Metro_train.jpg', color: 'bg-red-600', width: 'w-[320px]' },
-    { name: 'NAKHEEL', sector: 'Real Estate', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/ISS-59_World_Islands%2C_Palm_Jumeirah_and_Palm_Jebel_Ali%2C_Dubai.jpg/800px-ISS-59_World_Islands%2C_Palm_Jumeirah_and_Palm_Jebel_Ali%2C_Dubai.jpg', color: 'bg-teal-600', width: 'w-[310px]' },
-    { name: 'ETISALAT', sector: 'Telecom', image: 'https://images.unsplash.com/photo-1542296332-2e44a99cfef9?q=80&w=800&auto=format&fit=crop', color: 'bg-green-700', width: 'w-[290px]' }, // Placeholder for Etisalat
-    { name: 'NESTLE', sector: 'Industrial', image: 'https://images.unsplash.com/photo-1566996695279-b148a049d561?q=80&w=800&auto=format&fit=crop', color: 'bg-amber-700', width: 'w-[300px]' },
-    { name: 'VOLVO', sector: 'Automotive', image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800&auto=format&fit=crop', color: 'bg-indigo-600', width: 'w-[310px]' }
+    { name: 'EMAAR', sector: 'Real Estate', image: 'https://cdn.properties.emaar.com/wp-content/uploads/2023/09/MicrosoftTeams-image-70-e1694072306832.jpg', color: 'bg-blue-600', width: 'w-[280px]' },
+    { name: 'RTA DUBAI', sector: 'Transport', image: 'https://d3h330vgpwpjr8.cloudfront.net/x/1000x/RTA_confirms_Dubai_Gold_Line_Metro_expansion_c1464ae14d.webp', color: 'bg-red-600', width: 'w-[320px]' },
+    { name: 'NAKHEEL', sector: 'Real Estate', image: 'https://www.nakheel.com/images/nakheelcorporatelibraries/press-releases/nakheel-launches-first-villas-on-new-futuristic-palm-jebel-ali--18-09-2023.jpg?sfvrsn=31c2d7d6_1', color: 'bg-teal-600', width: 'w-[310px]' },
+    { name: 'ETISALAT', sector: 'Telecom', image: 'https://suweidi.com/wp-content/uploads/2021/05/1106-Office-Building-for-Etisalat-in-Warsan-Dubai-scaled.jpg', color: 'bg-green-700', width: 'w-[290px]' }, // Placeholder for Etisalat
+    { name: 'NESTLE', sector: 'Industrial', image: 'https://cloudfront-eu-central-1.images.arcpublishing.com/williamreed/F7DDRAQKCBMZVCFY3VVLD6LQMU.jpg', color: 'bg-amber-700', width: 'w-[300px]' },
+    { name: 'VOLVO', sector: 'Automotive', image: 'https://d2hucwwplm5rxi.cloudfront.net/wp-content/uploads/2022/03/02125052/Volvo-Showrooms-in-the-UAE-Cover-02-03.jpg', color: 'bg-indigo-600', width: 'w-[310px]' }
 ];
 
 // 2. PROJECT ICONS (Turnkey & Luxury Retail)
 const CLIENTS_ROW_2 = [
-    { name: 'APPLE STORE', sector: 'Retail', image: 'https://images.unsplash.com/photo-1556656793-02f1f8cb14b5?q=80&w=800&auto=format&fit=crop', color: 'bg-gray-200', width: 'w-[320px]' }, // Apple Store style
-    { name: 'SAMSUNG HQ', sector: 'Corporate', image: 'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?q=80&w=800&auto=format&fit=crop', color: 'bg-blue-600', width: 'w-[280px]' },
-    { name: 'DUBAI MALL', sector: 'Landmark', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Burj_Al_Arab%2C_Dubai%2C_UAE.jpg/800px-Burj_Al_Arab%2C_Dubai%2C_UAE.jpg', color: 'bg-yellow-600', width: 'w-[290px]' }, // Using generic luxury placeholder
-    { name: 'EXPO 2020', sector: 'Global', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop', color: 'bg-orange-500', width: 'w-[300px]' },
-    { name: 'CHRISTIAN DIOR', sector: 'Luxury', image: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=800&auto=format&fit=crop', color: 'bg-purple-800', width: 'w-[310px]' }
+    { name: 'APPLE STORE', sector: 'Retail', image: 'https://rtlimages.apple.com/cmc/dieter/store/16_9/R597.png?resize=2880:1612&output-format=jpg&output-quality=85&interpolation=progressive-bicubic', color: 'bg-gray-200', width: 'w-[320px]' }, // Apple Store style
+    { name: 'SAMSUNG HQ', sector: 'Corporate', image: 'https://images.samsung.com/is/image/samsung/ae-newsImg-61321451?$ORIGIN_JPG$', color: 'bg-blue-600', width: 'w-[280px]' },
+    { name: 'DUBAI MALL', sector: 'Landmark', image: 'https://cdn.excelproperties.ae/media/blog/hero/The_Dubai_Mall_1280x720.webp?width=1280&height=384&format=webp&quality=90', color: 'bg-yellow-600', width: 'w-[290px]' }, // Using generic luxury placeholder
+    { name: 'EXPO 2020', sector: 'Global', image: 'https://ava-public.s3.eu-central-1.amazonaws.com/wp-content/uploads/2022/09/27213248/Expo-2020.jpg', color: 'bg-orange-500', width: 'w-[300px]' },
+    { name: 'CHRISTIAN DIOR', sector: 'Luxury', image: 'https://djx5h8pabpett.cloudfront.net/wp-content/uploads/sites/4/2019/09/17093225/4-1024x683.png', color: 'bg-purple-800', width: 'w-[310px]' }
 ];
 
 const TitanCard = ({ client }: { client: any }) => (

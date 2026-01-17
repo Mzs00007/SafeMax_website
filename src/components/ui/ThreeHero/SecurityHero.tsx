@@ -58,7 +58,7 @@ export default function SecurityHero() {
                 className="absolute inset-0 z-0 filter saturate-[0.8]"
             >
                 {/* Security/CCTV Background */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-40 blur-[2px]" />
+                <div className="absolute inset-0 bg-[url('https://www.rgb.com/sites/default/files/news/images/worlds-tallest-building.jpg')] bg-cover bg-center opacity-40 blur-[2px]" />
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-blue-900/10 to-slate-950" />
             </motion.div>
 
